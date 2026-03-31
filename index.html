@@ -349,55 +349,58 @@
     /* ── SKILLS ── */
     #skills { background: var(--navy2); }
 
-    /* Tab bar */
-    .skills-tabs {
-      display: flex; gap: 0; flex-wrap: nowrap; overflow-x: auto;
-      border-bottom: 1px solid var(--border); margin-bottom: 2.8rem;
-      scrollbar-width: none;
+    .skills-all-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
     }
-    .skills-tabs::-webkit-scrollbar { display: none; }
-    .skill-tab-btn {
-      background: none; border: none; border-bottom: 2px solid transparent;
-      margin-bottom: -1px; padding: 0.8rem 1.3rem; white-space: nowrap;
-      font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted);
-      cursor: pointer; display: flex; align-items: center; gap: 0.45rem;
-      transition: color 0.2s, border-color 0.2s;
+    .scc {
+      background: var(--card); border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 0 0 10px 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.3s;
     }
-    .skill-tab-btn:hover { color: var(--text); }
-    .skill-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .skill-tab-btn .tab-icon { font-size: 0.95rem; }
-
-    /* Panels */
-    .skills-panel { display: none; }
-    .skills-panel.active {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start;
-      animation: panelIn 0.35s ease;
+    .scc:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+      border-color: rgba(200,169,110,0.45);
+      border-top-color: var(--gold2);
     }
-    @keyframes panelIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
-
-    .panel-col-title {
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem;
+    .scc-header {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 1.1rem; padding-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(200,169,110,0.12);
     }
-    .skill-bar-wrap { margin-bottom: 1.15rem; }
-    .skill-bar-label { display: flex; justify-content: space-between; margin-bottom: 0.45rem; font-size: 0.84rem; }
-    .skill-bar-label span:first-child { color: var(--text); }
-    .skill-bar-pct { color: var(--gold); font-weight: 600; }
-    .skill-bar-bg { background: rgba(255,255,255,0.06); border-radius: 20px; height: 5px; overflow: hidden; }
-    .skill-bar-fill {
-      height: 100%; border-radius: 20px; width: 0%;
-      background: linear-gradient(90deg, var(--gold), var(--accent));
-      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
-      box-shadow: 0 0 8px rgba(200,169,110,0.35);
+    .scc-icon { font-size: 1.1rem; line-height: 1; }
+    .scc-title {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--gold);
     }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    /* Core skills — gold-tinted, slightly heavier */
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .tag {
-      font-size: 0.76rem; padding: 0.3rem 0.75rem;
-      background: rgba(200,169,110,0.08); border: 1px solid rgba(200,169,110,0.2);
-      color: var(--text); border-radius: 20px; transition: background 0.2s, transform 0.2s;
+      font-size: 0.76rem; padding: 0.28rem 0.7rem;
+      background: rgba(200,169,110,0.07); border: 1px solid rgba(200,169,110,0.18);
+      color: var(--muted); border-radius: 20px;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      cursor: default;
     }
-    .tag:hover { background: rgba(200,169,110,0.18); transform: scale(1.05); }
+    .tag:hover { background: rgba(200,169,110,0.16); color: var(--text); transform: scale(1.04); }
+    /* Primary/core tags: visually heavier, clearly "owned" */
+    .tag.tag-core {
+      background: rgba(200,169,110,0.15);
+      border-color: rgba(200,169,110,0.42);
+      color: var(--text); font-weight: 500;
+    }
+    .tag.tag-core:hover { background: rgba(200,169,110,0.25); }
+    /* Divider between core and supporting */
+    .tag-group-label {
+      width: 100%; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); opacity: 0.55; margin-top: 0.65rem; margin-bottom: 0.1rem;
+    }
 
     /* ── EDUCATION ── */
     #education { background: var(--navy); }
@@ -508,9 +511,8 @@
       .exp-kpi { min-width: 80px; }
       /* Deco icons */
       .deco-icon { display: none; }
-      /* Skills tabs */
-      .skill-tab-btn { padding: 0.7rem 0.9rem; font-size: 0.72rem; }
-      .skills-panel.active { grid-template-columns: 1fr; gap: 2rem; }
+      /* Skills */
+      .skills-all-grid { grid-template-columns: 1fr 1fr; }
       /* Education */
       .edu-grid { grid-template-columns: 1fr; }
       /* Competency bars */
@@ -522,6 +524,7 @@
       .stat-num { font-size: 1.7rem; }
       .typewriter-wrap { font-size: 1rem; min-height: 1.7rem; }
       .section-title { font-size: 1.7rem; }
+      .skills-all-grid { grid-template-columns: 1fr; }
       .exp-logo-box { width: 70px; height: 40px; }
       .exp-logo-box svg { width: 70px; height: 40px; }
       .exp-company { font-size: 0.95rem; }
@@ -880,8 +883,8 @@
                 <rect width="84" height="48" rx="7" fill="#c62828"/>
                 <path d="M24 7 C24 7, 11 22, 11 30 a13 13 0 0 0 26 0 C37 22, 24 7, 24 7 Z" fill="rgba(255,255,255,0.95)"/>
                 <line x1="44" y1="10" x2="44" y2="38" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-                <text x="64" y="23" font-family="Arial Black,sans-serif" font-weight="900" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">BLOOD</text>
-                <text x="64" y="35" font-family="Arial Black,sans-serif" font-weight="900" font-size="10" fill="rgba(255,255,255,0.88)" text-anchor="middle" letter-spacing="0.5">CONNECT</text>
+                <text x="62" y="22" font-family="Arial Black,sans-serif" font-weight="900" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="0">BLOOD</text>
+                <text x="62" y="34" font-family="Arial Black,sans-serif" font-weight="900" font-size="9" fill="rgba(255,255,255,0.9)" text-anchor="middle" letter-spacing="0">CONNECT</text>
               </svg>
             </div>
             <div class="exp-company">BloodConnect Foundation</div>
@@ -927,145 +930,129 @@
   </div>
 
   <!-- Tab nav -->
-  <div class="skills-tabs fade-in" role="tablist">
-    <button class="skill-tab-btn active" role="tab" data-tab="0"><span class="tab-icon">🎯</span>Strategy</button>
-    <button class="skill-tab-btn" role="tab" data-tab="1"><span class="tab-icon">⚡</span>Digital</button>
-    <button class="skill-tab-btn" role="tab" data-tab="2"><span class="tab-icon">📈</span>Growth &amp; GTM</button>
-    <button class="skill-tab-btn" role="tab" data-tab="3"><span class="tab-icon">💰</span>Finance</button>
-    <button class="skill-tab-btn" role="tab" data-tab="4"><span class="tab-icon">🚀</span>Delivery</button>
-    <button class="skill-tab-btn" role="tab" data-tab="5"><span class="tab-icon">🛠</span>Tools &amp; Data</button>
-  </div>
+  <div class="skills-all-grid">
 
-  <!-- Tab 0: Strategy & Consulting -->
-  <div class="skills-panel active" data-panel="0">
-    <div>
-      <div class="panel-col-title">Core Proficiencies</div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Corporate Strategy &amp; Value Creation</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Operating Model Transformation</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Business Case Development</span><span class="skill-bar-pct">91%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="91"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Executive Stakeholder Communication</span><span class="skill-bar-pct">94%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="94"></div></div></div>
-    </div>
-    <div>
-      <div class="panel-col-title">Keywords &amp; Domains</div>
+    <!-- Strategy & Consulting -->
+    <div class="scc fade-in">
+      <div class="scc-header"><span class="scc-icon">🎯</span><span class="scc-title">Strategy &amp; Consulting</span></div>
       <div class="skill-tags">
-        <span class="tag">Market Entry Strategy</span><span class="tag">Value Chain Analysis</span>
-        <span class="tag">Business Process Reengineering</span><span class="tag">Competitive Intelligence</span>
-        <span class="tag">Organizational Design</span><span class="tag">C-Suite Advisory</span>
-        <span class="tag">Strategic Roadmapping</span><span class="tag">Board Presentations</span>
-        <span class="tag">Due Diligence Support</span><span class="tag">Problem Structuring</span>
-        <span class="tag">Issue-Based Thinking</span><span class="tag">MECE Frameworks</span>
+        <span class="tag tag-core">Corporate Strategy</span>
+        <span class="tag tag-core">Operating Model Transformation</span>
+        <span class="tag tag-core">Business Case Development</span>
+        <span class="tag tag-core">Executive Stakeholder Management</span>
+        <span class="tag tag-core">Strategic Roadmapping</span>
+        <span class="tag-group-label">Also experienced in</span>
+        <span class="tag">Market Entry Strategy</span>
+        <span class="tag">Value Chain Analysis</span>
+        <span class="tag">Competitive Intelligence</span>
+        <span class="tag">Organizational Design</span>
+        <span class="tag">Due Diligence Support</span>
+        <span class="tag">MECE Frameworks</span>
+        <span class="tag">C-Suite Advisory</span>
+        <span class="tag">Board Presentations</span>
       </div>
     </div>
-  </div>
 
-  <!-- Tab 1: Digital Transformation -->
-  <div class="skills-panel" data-panel="1">
-    <div>
-      <div class="panel-col-title">Core Proficiencies</div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Digital Strategy &amp; Roadmapping</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Change Management &amp; Adoption</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Enterprise Technology Implementation</span><span class="skill-bar-pct">84%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="84"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Process Digitization &amp; Automation</span><span class="skill-bar-pct">83%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="83"></div></div></div>
-    </div>
-    <div>
-      <div class="panel-col-title">Keywords &amp; Domains</div>
+    <!-- Digital Transformation -->
+    <div class="scc fade-in">
+      <div class="scc-header"><span class="scc-icon">⚡</span><span class="scc-title">Digital Transformation</span></div>
       <div class="skill-tags">
-        <span class="tag">ERP/CRM Implementation</span><span class="tag">Dynamics 365</span>
-        <span class="tag">Digital KPIs &amp; OKRs</span><span class="tag">IT–Business Alignment</span>
-        <span class="tag">Technology Assessment</span><span class="tag">User Acceptance Testing</span>
-        <span class="tag">RPA &amp; Workflow Automation</span><span class="tag">Azure DevOps</span>
-        <span class="tag">Digital Adoption Programs</span><span class="tag">BPMN Process Mapping</span>
-        <span class="tag">Agile Transformation</span><span class="tag">Supply Chain Optimization</span>
+        <span class="tag tag-core">Digital Strategy &amp; Roadmapping</span>
+        <span class="tag tag-core">Change Management &amp; Adoption</span>
+        <span class="tag tag-core">Enterprise Technology Implementation</span>
+        <span class="tag tag-core">ERP/CRM Implementation</span>
+        <span class="tag-group-label">Also experienced in</span>
+        <span class="tag">Process Digitization &amp; Automation</span>
+        <span class="tag">IT–Business Alignment</span>
+        <span class="tag">RPA &amp; Workflow Automation</span>
+        <span class="tag">Digital Adoption Programs</span>
+        <span class="tag">Agile Transformation</span>
+        <span class="tag">Supply Chain Optimization</span>
+        <span class="tag">User Acceptance Testing</span>
+        <span class="tag">BPMN Process Mapping</span>
       </div>
     </div>
-  </div>
 
-  <!-- Tab 2: Growth & GTM -->
-  <div class="skills-panel" data-panel="2">
-    <div>
-      <div class="panel-col-title">Core Proficiencies</div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Go-to-Market Strategy</span><span class="skill-bar-pct">93%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="93"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Revenue Growth Strategy</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Customer Segmentation &amp; Persona Mapping</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Sales Enablement &amp; Pipeline Development</span><span class="skill-bar-pct">86%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="86"></div></div></div>
-    </div>
-    <div>
-      <div class="panel-col-title">Keywords &amp; Domains</div>
+    <!-- Growth & GTM -->
+    <div class="scc fade-in">
+      <div class="scc-header"><span class="scc-icon">📈</span><span class="scc-title">Growth &amp; Go-to-Market</span></div>
       <div class="skill-tags">
-        <span class="tag">Market Sizing (TAM/SAM/SOM)</span><span class="tag">Pricing Strategy</span>
-        <span class="tag">Product-Market Fit</span><span class="tag">Brand Positioning</span>
-        <span class="tag">Competitive Benchmarking</span><span class="tag">Channel Strategy</span>
-        <span class="tag">Customer Journey Mapping</span><span class="tag">Demand Generation</span>
-        <span class="tag">Market Intelligence Reports</span><span class="tag">Growth Hacking</span>
-        <span class="tag">New Market Entry</span><span class="tag">Value Proposition Design</span>
+        <span class="tag tag-core">Go-to-Market Strategy</span>
+        <span class="tag tag-core">Revenue Growth Strategy</span>
+        <span class="tag tag-core">Customer Segmentation</span>
+        <span class="tag tag-core">Value Proposition Design</span>
+        <span class="tag-group-label">Also experienced in</span>
+        <span class="tag">Market Sizing (TAM/SAM/SOM)</span>
+        <span class="tag">Pricing Strategy</span>
+        <span class="tag">Product-Market Fit</span>
+        <span class="tag">Brand Positioning</span>
+        <span class="tag">Channel Strategy</span>
+        <span class="tag">Customer Journey Mapping</span>
+        <span class="tag">Sales Enablement</span>
+        <span class="tag">Demand Generation</span>
       </div>
     </div>
-  </div>
 
-  <!-- Tab 3: Financial Analysis -->
-  <div class="skills-panel" data-panel="3">
-    <div>
-      <div class="panel-col-title">Core Proficiencies</div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Financial Modeling &amp; Forecasting</span><span class="skill-bar-pct">86%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="86"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Portfolio &amp; Investment Analysis</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>KPI Framework Design</span><span class="skill-bar-pct">91%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="91"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Budget Planning &amp; Cost Optimization</span><span class="skill-bar-pct">84%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="84"></div></div></div>
-    </div>
-    <div>
-      <div class="panel-col-title">Keywords &amp; Domains</div>
+    <!-- Financial Analysis -->
+    <div class="scc fade-in">
+      <div class="scc-header"><span class="scc-icon">💰</span><span class="scc-title">Financial Analysis</span></div>
       <div class="skill-tags">
-        <span class="tag">Bloomberg Terminal</span><span class="tag">Investment Due Diligence</span>
-        <span class="tag">Valuation Analysis</span><span class="tag">ROI &amp; Cost-Benefit Analysis</span>
-        <span class="tag">P&amp;L Management</span><span class="tag">Risk Assessment</span>
-        <span class="tag">Asset Allocation</span><span class="tag">Quantitative Analysis</span>
-        <span class="tag">Mutual Fund Analysis</span><span class="tag">Capital Markets</span>
-        <span class="tag">CFA Level 2</span><span class="tag">HDFC / EXIM / NABARD</span>
+        <span class="tag tag-core">Financial Modeling &amp; Forecasting</span>
+        <span class="tag tag-core">Portfolio &amp; Investment Analysis</span>
+        <span class="tag tag-core">KPI Framework Design</span>
+        <span class="tag tag-core">Business Case Financials</span>
+        <span class="tag-group-label">Also experienced in</span>
+        <span class="tag">Valuation Analysis</span>
+        <span class="tag">ROI &amp; Cost-Benefit Analysis</span>
+        <span class="tag">P&amp;L Management</span>
+        <span class="tag">Budget Planning</span>
+        <span class="tag">Bloomberg Terminal</span>
+        <span class="tag">Capital Markets</span>
+        <span class="tag">CFA Level 2</span>
+        <span class="tag">Investment Due Diligence</span>
       </div>
     </div>
-  </div>
 
-  <!-- Tab 4: Project Delivery -->
-  <div class="skills-panel" data-panel="4">
-    <div>
-      <div class="panel-col-title">Core Proficiencies</div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Agile Delivery &amp; Sprint Management</span><span class="skill-bar-pct">93%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="93"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Cross-functional Team Leadership</span><span class="skill-bar-pct">91%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="91"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Requirements Engineering</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Risk &amp; Issue Management</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
-    </div>
-    <div>
-      <div class="panel-col-title">Keywords &amp; Domains</div>
+    <!-- Project Delivery -->
+    <div class="scc fade-in">
+      <div class="scc-header"><span class="scc-icon">🚀</span><span class="scc-title">Project &amp; Programme Delivery</span></div>
       <div class="skill-tags">
-        <span class="tag">Scrum</span><span class="tag">JIRA</span>
-        <span class="tag">Azure DevOps</span><span class="tag">BPMN Process Mapping</span>
-        <span class="tag">Sprint Planning</span><span class="tag">Backlog Grooming</span>
-        <span class="tag">Workshop Facilitation</span><span class="tag">OKR Setting</span>
-        <span class="tag">Program Management</span><span class="tag">Stakeholder Reporting</span>
-        <span class="tag">UAT Coordination</span><span class="tag">Functional Specifications</span>
+        <span class="tag tag-core">Agile Delivery &amp; Sprint Management</span>
+        <span class="tag tag-core">Cross-functional Team Leadership</span>
+        <span class="tag tag-core">Requirements Engineering</span>
+        <span class="tag tag-core">Workshop Facilitation</span>
+        <span class="tag-group-label">Also experienced in</span>
+        <span class="tag">Scrum</span>
+        <span class="tag">Risk &amp; Issue Management</span>
+        <span class="tag">OKR Setting</span>
+        <span class="tag">Stakeholder Reporting</span>
+        <span class="tag">Program Management</span>
+        <span class="tag">Sprint Planning</span>
+        <span class="tag">UAT Coordination</span>
+        <span class="tag">Functional Specifications</span>
       </div>
     </div>
-  </div>
 
-  <!-- Tab 5: Tools & Data -->
-  <div class="skills-panel" data-panel="5">
-    <div>
-      <div class="panel-col-title">Core Proficiencies</div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Advanced Excel &amp; Financial Modeling</span><span class="skill-bar-pct">93%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="93"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Data Visualization (Tableau / Power BI)</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>SQL &amp; Python Analytics</span><span class="skill-bar-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div></div>
-      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Presentation &amp; Business Communication</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div></div>
-    </div>
-    <div>
-      <div class="panel-col-title">Tools &amp; Platforms</div>
+    <!-- Tools & Data -->
+    <div class="scc fade-in">
+      <div class="scc-header"><span class="scc-icon">🛠</span><span class="scc-title">Tools &amp; Data</span></div>
       <div class="skill-tags">
-        <span class="tag">Excel</span><span class="tag">PowerPoint</span>
-        <span class="tag">Tableau</span><span class="tag">Power BI</span>
-        <span class="tag">Bloomberg Terminal</span><span class="tag">SQL</span>
-        <span class="tag">Python</span><span class="tag">Google Suite</span>
-        <span class="tag">Azure DevOps</span><span class="tag">Dynamics 365</span>
-        <span class="tag">JIRA</span><span class="tag">Miro</span>
+        <span class="tag tag-core">Advanced Excel</span>
+        <span class="tag tag-core">PowerPoint</span>
+        <span class="tag tag-core">Tableau</span>
+        <span class="tag tag-core">Power BI</span>
+        <span class="tag-group-label">Also experienced in</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Python</span>
+        <span class="tag">Bloomberg Terminal</span>
+        <span class="tag">Dynamics 365</span>
+        <span class="tag">Azure DevOps</span>
+        <span class="tag">JIRA</span>
+        <span class="tag">Miro</span>
+        <span class="tag">Google Suite</span>
       </div>
     </div>
+
   </div>
 
 </section>
@@ -1382,40 +1369,6 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-/* ── SKILLS TABS ── */
-(function() {
-  const tabBtns = document.querySelectorAll('.skill-tab-btn');
-  const panels  = document.querySelectorAll('.skills-panel');
-
-  function activateTab(idx) {
-    tabBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
-    panels.forEach((p, i) => {
-      const wasActive = p.classList.contains('active');
-      p.classList.toggle('active', i === idx);
-      if (i === idx && !wasActive) {
-        // Re-animate bars
-        p.querySelectorAll('.skill-bar-fill').forEach(f => {
-          const w = f.dataset.width;
-          f.style.width = '0%';
-          requestAnimationFrame(() => requestAnimationFrame(() => { f.style.width = w + '%'; }));
-        });
-      }
-    });
-  }
-
-  tabBtns.forEach((btn, i) => btn.addEventListener('click', () => activateTab(i)));
-
-  // Animate bars in the initially active tab
-  panels[0]?.querySelectorAll('.skill-bar-fill').forEach(f => {
-    const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        f.style.width = f.dataset.width + '%';
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    obs.observe(f);
-  });
-})();
 
 /* ── FADE-IN ON SCROLL ── */
 (function() {
