@@ -343,6 +343,24 @@
 
     /* ── SKILLS ── */
     #skills { background: var(--navy2); }
+    #skills::before { content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:radial-gradient(ellipse 90% 70% at 50% 50%,rgba(17,34,64,.25) 0%,rgba(17,34,64,.65) 72%); }
+    .sk-bg { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
+      gap:2rem; pointer-events:none; opacity:.32; transform:translateY(8rem);
+      -webkit-mask:linear-gradient(transparent 0%,black 12%,black 88%,transparent 100%);
+      mask:linear-gradient(transparent 0%,black 12%,black 88%,transparent 100%); }
+    .sk-fg { position:relative; z-index:2; }
+    .river { display:flex; gap:.6rem; white-space:nowrap; }
+    .r1{animation:rv 22s linear infinite}.r2{animation:rv 28s linear infinite reverse}
+    .r3{animation:rv 18s linear infinite}.r4{animation:rv 25s linear infinite reverse}
+    .r5{animation:rv 32s linear infinite}.r6{animation:rv 20s linear infinite reverse}
+    .r7{animation:rv 27s linear infinite}.r8{animation:rv 23s linear infinite reverse}
+    .r9{animation:rv 30s linear infinite}
+    @keyframes rv { to { transform:translateX(-50%); } }
+    .sk { display:inline-block; font-size:.75rem; font-weight:500; padding:.45rem 1rem;
+      border-radius:2px; white-space:nowrap; flex-shrink:0; }
+    .sk.c { background:var(--gold); color:var(--navy); font-weight:700; }
+    .sk.s { background:rgba(200,169,110,.05); border:1px solid rgba(200,169,110,.18); color:var(--muted); }
 
     .skills-all-grid {
       display: grid;
@@ -923,6 +941,49 @@
 
 <!-- ═══════════════════════════ SKILLS ═══════════════════════════ -->
 <section id="skills">
+
+  <!-- Moving river background -->
+  <div class="sk-bg" aria-hidden="true">
+    <div class="river r1">
+      <span class="sk c">Corporate Strategy</span><span class="sk s">Operating Model Transformation</span><span class="sk c">Digital Strategy &amp; Roadmapping</span><span class="sk c">Change Management</span><span class="sk c">ERP/CRM Implementation</span><span class="sk s">Market Entry Strategy</span><span class="sk s">Value Chain Analysis</span><span class="sk s">Competitive Intelligence</span>
+      <span class="sk c">Corporate Strategy</span><span class="sk s">Operating Model Transformation</span><span class="sk c">Digital Strategy &amp; Roadmapping</span><span class="sk c">Change Management</span><span class="sk c">ERP/CRM Implementation</span><span class="sk s">Market Entry Strategy</span><span class="sk s">Value Chain Analysis</span><span class="sk s">Competitive Intelligence</span>
+    </div>
+    <div class="river r2">
+      <span class="sk c">Go-to-Market Strategy</span><span class="sk c">Revenue Growth Strategy</span><span class="sk c">Financial Modelling &amp; Forecasting</span><span class="sk c">KPI Framework Design</span><span class="sk s">Market Sizing (TAM/SAM/SOM)</span><span class="sk s">Pricing Strategy</span><span class="sk s">Valuation Analysis</span><span class="sk s">P&amp;L Management</span>
+      <span class="sk c">Go-to-Market Strategy</span><span class="sk c">Revenue Growth Strategy</span><span class="sk c">Financial Modelling &amp; Forecasting</span><span class="sk c">KPI Framework Design</span><span class="sk s">Market Sizing (TAM/SAM/SOM)</span><span class="sk s">Pricing Strategy</span><span class="sk s">Valuation Analysis</span><span class="sk s">P&amp;L Management</span>
+    </div>
+    <div class="river r3">
+      <span class="sk c">Agile Delivery &amp; Sprint Management</span><span class="sk c">Advanced Excel</span><span class="sk c">Tableau</span><span class="sk c">Power BI</span><span class="sk s">Scrum</span><span class="sk s">BPMN Process Mapping</span><span class="sk s">Azure DevOps</span><span class="sk s">SQL</span><span class="sk s">Python</span><span class="sk s">JIRA</span><span class="sk s">Bloomberg Terminal</span>
+      <span class="sk c">Agile Delivery &amp; Sprint Management</span><span class="sk c">Advanced Excel</span><span class="sk c">Tableau</span><span class="sk c">Power BI</span><span class="sk s">Scrum</span><span class="sk s">BPMN Process Mapping</span><span class="sk s">Azure DevOps</span><span class="sk s">SQL</span><span class="sk s">Python</span><span class="sk s">JIRA</span><span class="sk s">Bloomberg Terminal</span>
+    </div>
+    <div class="river r4">
+      <span class="sk s">Organizational Design</span><span class="sk c">Business Case Development</span><span class="sk s">Due Diligence Support</span><span class="sk c">Value Proposition Design</span><span class="sk s">Channel Strategy</span><span class="sk c">Workshop Facilitation</span><span class="sk s">OKR Setting</span><span class="sk c">Cross-functional Team Leadership</span><span class="sk s">Risk Assessment</span><span class="sk s">Stakeholder Reporting</span><span class="sk c">Customer Journey Mapping</span>
+      <span class="sk s">Organizational Design</span><span class="sk c">Business Case Development</span><span class="sk s">Due Diligence Support</span><span class="sk c">Value Proposition Design</span><span class="sk s">Channel Strategy</span><span class="sk c">Workshop Facilitation</span><span class="sk s">OKR Setting</span><span class="sk c">Cross-functional Team Leadership</span><span class="sk s">Risk Assessment</span><span class="sk s">Stakeholder Reporting</span><span class="sk c">Customer Journey Mapping</span>
+    </div>
+    <div class="river r5">
+      <span class="sk c">Market Entry Strategy</span><span class="sk s">MECE Frameworks</span><span class="sk c">Revenue Growth Strategy</span><span class="sk s">ROI &amp; Cost-Benefit Analysis</span><span class="sk c">Strategic Roadmapping</span><span class="sk s">C-Suite Advisory</span><span class="sk c">Operating Model Transformation</span><span class="sk s">Product-Market Fit</span><span class="sk s">Competitive Benchmarking</span>
+      <span class="sk c">Market Entry Strategy</span><span class="sk s">MECE Frameworks</span><span class="sk c">Revenue Growth Strategy</span><span class="sk s">ROI &amp; Cost-Benefit Analysis</span><span class="sk c">Strategic Roadmapping</span><span class="sk s">C-Suite Advisory</span><span class="sk c">Operating Model Transformation</span><span class="sk s">Product-Market Fit</span><span class="sk s">Competitive Benchmarking</span>
+    </div>
+    <div class="river r6">
+      <span class="sk s">Process Digitization &amp; Automation</span><span class="sk c">Financial Modelling &amp; Forecasting</span><span class="sk s">IT–Business Alignment</span><span class="sk c">Portfolio &amp; Investment Analysis</span><span class="sk s">Valuation Analysis</span><span class="sk c">KPI Framework Design</span><span class="sk s">Budget Planning</span><span class="sk c">P&amp;L Management</span><span class="sk s">Supply Chain Optimization</span>
+      <span class="sk s">Process Digitization &amp; Automation</span><span class="sk c">Financial Modelling &amp; Forecasting</span><span class="sk s">IT–Business Alignment</span><span class="sk c">Portfolio &amp; Investment Analysis</span><span class="sk s">Valuation Analysis</span><span class="sk c">KPI Framework Design</span><span class="sk s">Budget Planning</span><span class="sk c">P&amp;L Management</span><span class="sk s">Supply Chain Optimization</span>
+    </div>
+    <div class="river r7">
+      <span class="sk c">Agile Transformation</span><span class="sk s">UAT Coordination</span><span class="sk c">Requirements Engineering</span><span class="sk s">Azure DevOps</span><span class="sk c">Sprint Management</span><span class="sk s">Programme Management</span><span class="sk c">Customer Segmentation</span><span class="sk s">Market Sizing (TAM/SAM/SOM)</span><span class="sk c">Dynamics 365</span><span class="sk s">Miro</span>
+      <span class="sk c">Agile Transformation</span><span class="sk s">UAT Coordination</span><span class="sk c">Requirements Engineering</span><span class="sk s">Azure DevOps</span><span class="sk c">Sprint Management</span><span class="sk s">Programme Management</span><span class="sk c">Customer Segmentation</span><span class="sk s">Market Sizing (TAM/SAM/SOM)</span><span class="sk c">Dynamics 365</span><span class="sk s">Miro</span>
+    </div>
+    <div class="river r8">
+      <span class="sk s">RPA &amp; Workflow Automation</span><span class="sk c">Digital Adoption Programs</span><span class="sk s">Google Suite</span><span class="sk c">Executive Stakeholder Management</span><span class="sk s">Risk &amp; Issue Management</span><span class="sk c">Value Chain Analysis</span><span class="sk s">Bloomberg Terminal</span><span class="sk c">Board Presentations</span><span class="sk s">IT–Business Alignment</span><span class="sk c">Functional Specifications</span>
+      <span class="sk s">RPA &amp; Workflow Automation</span><span class="sk c">Digital Adoption Programs</span><span class="sk s">Google Suite</span><span class="sk c">Executive Stakeholder Management</span><span class="sk s">Risk &amp; Issue Management</span><span class="sk c">Value Chain Analysis</span><span class="sk s">Bloomberg Terminal</span><span class="sk c">Board Presentations</span><span class="sk s">IT–Business Alignment</span><span class="sk c">Functional Specifications</span>
+    </div>
+    <div class="river r9">
+      <span class="sk c">Change Management</span><span class="sk s">Scrum</span><span class="sk c">Due Diligence Support</span><span class="sk s">JIRA</span><span class="sk c">Competitive Intelligence</span><span class="sk s">Python</span><span class="sk c">Business Case Financials</span><span class="sk s">SQL</span><span class="sk c">Pricing Strategy</span><span class="sk s">User Acceptance Testing</span><span class="sk c">OKR Setting</span>
+      <span class="sk c">Change Management</span><span class="sk s">Scrum</span><span class="sk c">Due Diligence Support</span><span class="sk s">JIRA</span><span class="sk c">Competitive Intelligence</span><span class="sk s">Python</span><span class="sk c">Business Case Financials</span><span class="sk s">SQL</span><span class="sk c">Pricing Strategy</span><span class="sk s">User Acceptance Testing</span><span class="sk c">OKR Setting</span>
+    </div>
+  </div>
+
+  <!-- Foreground content -->
+  <div class="sk-fg">
   <div class="deco-icon" style="bottom:5%;right:2%;width:140px">
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="#c8a96e" stroke-width="4"/>
@@ -1055,6 +1116,8 @@
     </div>
 
   </div>
+
+  </div><!-- /.sk-fg -->
 
 </section>
 
